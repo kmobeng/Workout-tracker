@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import {checkDBHealth} from "./database/index";  
 import httpLogger from "./config/httpLogger.config";
+import { errorHandler } from "./middlewares/errorHandler.middleware";
 
 const app = express();
 
@@ -20,4 +21,7 @@ app.use("/health", async (req: Request, res: Response) => {
 app.use("/", (req: Request, res: Response) => {
   res.json({ message: "Welcome to the Workout Tracker API!" });
 });
+
+app.use(errorHandler);
+
 export default app;
