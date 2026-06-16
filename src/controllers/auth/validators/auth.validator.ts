@@ -5,6 +5,10 @@ export const signUpSchema = z.object({
     .string()
     .min(1, { message: "Name is required" })
     .max(255, { message: "Name must be less than 255 characters" }),
+  username: z
+    .string()
+    .min(1, { message: "Username is required" })
+    .max(255, { message: "Username must be less than 255 characters" }),
   email: z.email({ message: "Invalid email address" }),
   password: z
     .string()
